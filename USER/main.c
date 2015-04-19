@@ -9,6 +9,7 @@
 #include "touch.h" 
 #include "timer.h"
 
+
 #define POST_ENABLE 0
 
 //ALIENTEK Mini STM32¿ª·¢°å·¶Àý´úÂë21
