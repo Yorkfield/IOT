@@ -23,3 +23,4 @@
 ..\obj\main.o: ..\HARDWARE\TOUCH\touch.h
 ..\obj\main.o: ..\HARDWARE\TOUCH\ott2001a.h
 ..\obj\main.o: ..\HARDWARE\TIMER\timer.h
+..\obj\main.o: ..\cJSON\cJSON.h

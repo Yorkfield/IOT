@@ -34,7 +34,8 @@
  
 
 //////////////////////////////////////////////////////////////////
-//加入以下代码,支持printf函数,而不需要选择use MicroLIB	  
+//加入以下代码,支持printf函数,而不需要选择use MicroLIB	 
+
 #if 1
 #pragma import(__use_no_semihosting)             
 //标准库需要的支持函数                 
@@ -58,9 +59,13 @@ int fputc(int ch, FILE *f)
 	return ch;
 }
 #endif 
-
+//redefine _ttywrch()
+void _ttywrch(int ch)
+{
+    ch=ch;
+}
 /*使用microLib的方法*/
- /* 
+/* 
 int fputc(int ch, FILE *f)
 {
 	USART_SendData(USART1, (uint8_t) ch);
@@ -74,8 +79,7 @@ int GetKey (void)  {
     while (!(USART1->SR & USART_FLAG_RXNE));
 
     return ((int)(USART1->DR & 0x1FF));
-}
-*/
+}*/
  /*当前使用的缓存数组*/
 u8 bufCur = 0;
 //串口1中断服务程序
@@ -149,8 +153,8 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
             if (0x0a == Res)
             {                    
                 USART_RX_STA[bufCur] |= 0x8000;	//接收完成了    
-                USART_RX_BUF[bufCur][USART_RX_STA[bufCur] & 0X3FFF] = (bufCur + 'a');
-                USART_RX_STA[bufCur]++;                  
+//                USART_RX_BUF[bufCur][USART_RX_STA[bufCur] & 0X3FFF] = (bufCur + 'a');
+//                USART_RX_STA[bufCur]++;                  
                 bufCur++;
                 if (USART_BUF_LEN == bufCur)
                 {

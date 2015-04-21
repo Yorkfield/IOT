@@ -21,6 +21,7 @@
 "..\obj\stm32f10x_usart.o"
 "..\obj\misc.o"
 "..\obj\stm32f10x_tim.o"
+"..\obj\cjson.o"
 --strict --scatter "..\OBJ\TOUCH.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

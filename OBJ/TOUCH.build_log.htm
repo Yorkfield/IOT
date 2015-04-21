@@ -4,9 +4,23 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 C:\Users\Yorkfield\Documents\GraduateDesign\IOT\USER\TOUCH.uvproj
-Project File Date:  04/06/2015
+Project File Date:  04/21/2015
 
 <h2>Output:</h2>
+Build target 'Target 1'
+linking...
+Program Size: Code=56558 RO-data=7222 RW-data=136 ZI-data=7440  
+FromELF: creating hex file...
+"..\OBJ\TOUCH.axf" - 0 Error(s), 0 Warning(s).
+compiling main.c...
+main.c(130): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *"
+              json=cJSON_Parse(USART_RX_BUF[dspFlgTmp - 3]);
+main.c(17): warning:  #177-D: variable "prtTst" was declared but never referenced
+      char *prtTst = "AT+RST\r\n";
+main.c(19): warning:  #550-D: variable "out" was set but never used
+      char *out;cJSON *json,*root;
+main.c: 3 warnings, 0 errors
+"main.c" - 0 Error(s), 3 Warning(s).
 </pre>
 </body>
 </html>

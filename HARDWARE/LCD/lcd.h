@@ -187,6 +187,11 @@ void LCD_ShowNum(u16 x,u16 y,u32 num,u8 len,u8 size);  						//显示一个数字
 void LCD_ShowxNum(u16 x,u16 y,u32 num,u8 len,u8 size,u8 mode);				//显示 数字
 void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p);		//显示一个字符串,12/16字体
 
+/*在第line行显示length长度的字符，从buffer指针指向元素开始显示*/
+void dspLine(unsigned char *line, unsigned int lenTmp, unsigned char *buffer);
+/*从第line行开始，全屏显示长度为length的字符串，从buffer指针指向元素开始显示*/
+void dipAll(unsigned char *line, unsigned int length, unsigned char *buffer);
+
 void LCD_WriteReg(u16 LCD_Reg, u16 LCD_RegValue);
 u16 LCD_ReadReg(u16 LCD_Reg);
 void LCD_WriteRAM_Prepare(void);

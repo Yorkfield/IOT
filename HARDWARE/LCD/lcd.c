@@ -2945,6 +2945,35 @@ void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p)
     }  
 }
 
+/*在第line行显示length长度的字符，从buffer指针指向元素开始显示*/
+void dspLine(unsigned char *line, unsigned int lenTmp, unsigned char *buffer)
+{
+    
+    if (0 == (*line))
+    {
+        LCD_Clear(WHITE);
+    }
+    
+    LCD_ShowString(0, 20*(*line), 8*lenTmp, 16, 16, buffer);
+    (*line)++;
+    if ((*line) > 15)
+    {
+        *line = 0;
+    }
+}
+
+/*从第line行开始，全屏显示长度为length的字符串，从buffer指针指向元素开始显示*/
+void dipAll(unsigned char *line, unsigned int length, unsigned char *buffer)
+{
+    unsigned int lenTmp = length;
+    unsigned char *bufTmp = buffer;
+    for (;lenTmp > 30;lenTmp -= 30)
+    {
+        dspLine(line, 30, bufTmp);
+        bufTmp += 30;
+    }
+    dspLine(line, lenTmp, bufTmp);
+}
 
 
 
