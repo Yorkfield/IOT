@@ -24,3 +24,4 @@
 ..\obj\main.o: ..\HARDWARE\TOUCH\ott2001a.h
 ..\obj\main.o: ..\HARDWARE\TIMER\timer.h
 ..\obj\main.o: ..\cJSON\cJSON.h
+..\obj\main.o: ..\HARDWARE\DS18B20\ds18b20.h

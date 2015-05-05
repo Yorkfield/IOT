@@ -11,6 +11,7 @@
 "..\obj\ott2001a.o"
 "..\obj\touch.o"
 "..\obj\timer.o"
+"..\obj\ds18b20.o"
 "..\obj\delay.o"
 "..\obj\sys.o"
 "..\obj\usart.o"

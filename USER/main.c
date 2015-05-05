@@ -9,6 +9,7 @@
 #include "touch.h" 
 #include "timer.h"
 #include "cJSON.h"
+#include "ds18b20.h"
 
 #define POST_ENABLE 0
 
@@ -16,6 +17,7 @@ int main(void)
 { 
     char *prtTst = "AT+RST\r\n";
     u8 jsonvl = 2;
+    float tprt = 0;
     char *out;cJSON *json,*root;
     u8 rdFlg = 0;
     u8 dspFlg = 0;
@@ -24,22 +26,27 @@ int main(void)
     u8 dspFlgTmp;
 
     NVIC_Configuration();
+
 	delay_init();	    	 //延时函数初始化	  
 	uart_init(9600);	 	//串口初始化为9600
-	LCD_Init();			   	//初始化LCD 			 	
+	LCD_Init();			   	//初始化LCD 
+    DS18B20_Init(); 
 	tp_dev.init();			//触摸屏初始化
  	POINT_COLOR=BLACK;//设置字体为红色 
     TIM3_Int_Init(4999,7199);
-    
+    tprt=DS18B20_Get_Temp();
+    tprt/=10;
     root=cJSON_CreateObject();
-    cJSON_AddNumberToObject(root,"value",13.5);
+    cJSON_AddNumberToObject(root,"value",15.5);
     out=cJSON_PrintUnformatted(root);
+
     
     while (1)
     {
         #if POST_ENABLE
         #else
-        LCD_ShowNum(0,0,jsonvl,1,16);
+        tprt=DS18B20_Get_Temp();
+        LCD_ShowNum(0,0,(int)tprt,3,16);
         #endif
         if (10 == g_timer)
         {
